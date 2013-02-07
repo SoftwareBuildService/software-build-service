@@ -1,0 +1,32 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides: nexus
+# Required-Start: $local_fs $remote_fs $network $syslog
+# Required-Stop: $local_fs $remote_fs $network $syslog
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Management of Nexus 2.0.x
+### END INIT INFO
+ 
+#Defining NEXUS_HOME
+NEXUS_HOME=/opt/nexus-2.0.6
+ 
+case "$1" in
+start)
+echo "Starting Nexus..."
+sudo -u nexus sh ${NEXUS_HOME}/bin/nexus start &
+;;
+stop)
+echo "Stopping Nexus..."
+sudo -u nexus sh ${NEXUS_HOME}/bin/nexus stop &
+;;
+log)
+echo "Showing server.log..."
+tail -1000f ${NEXUS_HOME}/logs/*.log
+;;
+*)
+echo "Usage: /etc/init.d/nexus {start|stop}"
+exit 1
+;; esac
+exit 0

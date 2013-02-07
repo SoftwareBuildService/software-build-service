@@ -1,0 +1,18 @@
+<Location /jenkins>
+    SSLRequireSSL
+
+    AuthBasicProvider       "ldap"
+    AuthLDAPUrl             "ldap://localhost:389/dc=sbs,dc=org"
+    AuthLDAPGroupAttributeIsDN on
+    AuthLDAPBindDN          "cn=sbs-read,ou=system,dc=sbs,dc=org"
+    AuthLDAPBindPassword    "sbs123"
+
+    AuthType Basic
+    AuthName "sbs"
+
+    Require valid-user
+
+    ProxyPass http://localhost:8081/jenkins/
+    ProxyPassReverse http://localhost:8081/jenkins/
+
+</Location>

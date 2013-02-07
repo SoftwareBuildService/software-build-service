@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<security-configuration>
+  <version>2.0.3</version>
+  <enabled>true</enabled>
+  <anonymousUsername>anonymous</anonymousUsername>
+  <anonymousPassword>{b4SV+sWRTAcHzvUUEII9GXuNq+vc8N7s0rcX36VJEjA=}</anonymousPassword>
+  <realms>
+    <realm>XmlAuthenticatingRealm</realm>
+    <realm>XmlAuthorizingRealm</realm>
+    <realm>NexusLdapAuthenticationRealm</realm>
+  </realms>
+  <securityManager>nexus</securityManager>
+</security-configuration>

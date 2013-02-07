@@ -1,0 +1,58 @@
+    # Subtree for groups
+    dn: ou=groups,dc=$DC1,dc=$DC2
+    ou: groups
+    description: $DC1.$DC2 groups
+    objectClass: organizationalUnit
+
+    # Subtree for system accounts
+    dn: ou=system,dc=$DC1,dc=$DC2
+    ou: system
+    description: special accounts used by SE tools.
+    objectClass: organizationalUnit
+
+    # Adding LDAP read permission user
+    dn: cn=sbs-read,ou=system,dc=$DC1,dc=$DC2
+    objectClass: organizationalRole
+    objectClass: simpleSecurityObject
+    cn: sbs_read
+    userPassword: $READ_USER_PW
+    description: This SBS user has LDAP read permission
+
+    # Adding LDAP read write permission user
+    dn: cn=sbs-read-write,ou=system,dc=$DC1,dc=$DC2
+    objectClass: organizationalRole
+    objectClass: simpleSecurityObject
+    cn: sbs_read_write
+    userPassword: $READ_USER_PW
+    description: This SBS user has LDAP read and write permission
+
+    # Adding technical user to access SVN from Jenkins
+    # TODO: Move to Jenkins postinst script!!!
+    dn: cn=sbs-svn-jenkins,ou=system,dc=$DC1,dc=$DC2
+    objectClass: organizationalRole
+    objectClass: simpleSecurityObject
+    cn: sbs_svn_jenkins
+    userPassword: $READ_USER_PW
+    description: This technical user has access to SVN from Jenkins
+
+    # Subtree for core groups
+    dn: ou=core,ou=groups,dc=sbs,dc=org
+    objectClass: organizationalUnit
+    ou: core
+    description: core service groups
+
+    # Global "SBS Admin" role
+    dn: cn=core-sbs-admin,ou=core,ou=groups,dc=sbs,dc=org
+    objectClass: top
+    objectClass: groupOfNames
+    cn: core-sbs-admin
+    member: cn=admin,dc=sbs,dc=org
+    description: global "SBS admin" role
+
+    # Global "Manager" role
+    dn: cn=core-manager,ou=core,ou=groups,dc=sbs,dc=org
+    objectClass: top
+    objectClass: groupOfNames
+    cn: core-manager
+    member: cn=admin,dc=sbs,dc=org
+    description: global "Manager" role

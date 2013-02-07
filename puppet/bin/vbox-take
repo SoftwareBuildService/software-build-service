@@ -1,0 +1,7 @@
+#!/bin/bash -x
+
+export VM="Ubuntu 12.10 Agent"
+export SNAPSHOT="PuppetAgent"
+
+echo "### Taking snapshot $SNAPSHOT of the VM $VM ..."
+VBoxManage snapshot "$VM" take "$SNAPSHOT"

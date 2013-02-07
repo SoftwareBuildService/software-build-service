@@ -1,0 +1,13 @@
+#!/bin/bash -x
+
+export VM="Ubuntu 12.10 Agent"
+export SNAPSHOT="PuppetAgent"
+
+echo "### Stopping the VM $VM ..."
+VBoxManage controlvm "$VM" savestate
+
+echo "### Reverting the VM $VM to snapshot $SNAPSHOT ..."
+VBoxManage snapshot "$VM" restore "$SNAPSHOT"
+
+echo "### Starting the VM $VM ..."
+VBoxManage startvm "$VM"

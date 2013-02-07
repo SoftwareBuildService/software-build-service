@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<user>
+    <fullName>sbs-technical-admin</fullName>
+    <properties>
+        <hudson.security.HudsonPrivateSecurityRealm_-Details>
+            <passwordHash>#jbcrypt:$2a$10$hGS2CkkX6x5uyiCW1GSEmuSc3TP6AOxIk48hiXRUQNFciQ5wAZnA2</passwordHash>
+        </hudson.security.HudsonPrivateSecurityRealm_-Details>
+        <org.jenkinsci.main.modules.cli.auth.ssh.UserPropertyImpl>
+            <authorizedKeys>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDN0ME/ZEwrg7Kb1wr44cWhQTLhWza3IoDwIhoaq4qxJBeANwJtJkXrjWLbvkKVbhhexDex4OOG41OSvPWJLuBcKp8uLQFVHIn1cL7JYaDXCfIA/TNfZ8dp16pmcNxqcGoru4LnCPAjZ8Wb2WnnxAdBclhcEBLuxyMntF9Ypu42tskX6aOFRJ5wgCSaTkSRAR7NtyV+f69YGoDTOvhYps34Pc0YooCxgIxc6WRkiSb5qKyqyL9i5hb7DKOQsOlgx8+M/1xnhSOUr/sZmeG0jF48icrjJnUazQ465miDBWMeYuQH6oPcGgZZYwpsu1YHVsO+5Ewa79Wi6FJF3P6LosDf sbs-technical-admin</authorizedKeys>
+        </org.jenkinsci.main.modules.cli.auth.ssh.UserPropertyImpl>
+    </properties>
+</user>
