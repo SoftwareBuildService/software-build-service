@@ -1,6 +1,5 @@
 class jenkins {
   require => Package['apache'];
-  require => Package['sbs-base'];
 
   package {'jenkins':
     ensure => present,

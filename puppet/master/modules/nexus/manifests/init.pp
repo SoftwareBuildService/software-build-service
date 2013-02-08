@@ -1,6 +1,5 @@
 class nexus {
   require => Package['apache'];
-  require => Package['sbs-base'];
 
   user { "nexus":
     ensure => present,

@@ -6,8 +6,6 @@ class sbs {
     ensure => present,
   }
 
-  // ### technical users ###
-
   user { "sbs":
     ensure => present,
     shell => "/bin/bash",

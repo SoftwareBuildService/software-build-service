@@ -60,7 +60,7 @@
                     if ($(tab).find("iframe").length == 0) {
                         var html = [];
                         html.push('<div class="tabIframeWrapper">');
-                        html.push('<div class="openout"><a href="/status">Status</a> | <a href="/sso/logout">Logout</a> <img src="images/T-Systems.png" alt="T-Systems Logo"/></div><iframe class="iframetab" src="' + url + '">Load Failed?</iframe>');
+                        html.push('<div class="openout"><a href="/status">Status</a> | <a href="/sso/logout">Logout</a></div><iframe class="iframetab" src="' + url + '">Load Failed?</iframe>');
                         html.push('</div>');
                         $(tab).append(html.join(""));
                         $(tab).find("iframe").height($(window).height()-80);

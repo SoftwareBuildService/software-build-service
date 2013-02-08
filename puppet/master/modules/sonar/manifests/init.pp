@@ -1,6 +1,5 @@
 class sonar {
   require => Package['apache'];
-  require => Package['sbs-base'];
 
   package {'mysql-server-5.5':
     ensure => present,

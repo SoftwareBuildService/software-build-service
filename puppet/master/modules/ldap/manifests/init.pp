@@ -3,6 +3,10 @@ class ldap {
     ensure => present,
   }
 
+  service {'slapd':
+    ensure => running,
+  }
+
   package {'ldap-utils':
     ensure => present,
   }
@@ -11,9 +15,6 @@ class ldap {
     ensure => present,
   }
 
-  service {'slapd':
-    ensure => stopped,
-  }
   /*
     ADMIN_PW=admin123
     READ_USER_NAME=sbs123
@@ -50,8 +51,4 @@ class ldap {
     echo would call: slapadd -v -f /etc/ldap/slapd.conf -l $TEMP_LDIF -b dc=$DC1,dc=$DC2
     rm $TEMP_LDIF
   */
-  
-  service {'slapd':
-    ensure => started,
-  }
 }
