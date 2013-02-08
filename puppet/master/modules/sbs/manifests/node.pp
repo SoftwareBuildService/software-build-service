@@ -1,5 +1,5 @@
-class sbs-build-node {
-  include sbs-base
+class sbs::node {
+  include sbs
 
   /*
      TODO: Cleanup cron jobs

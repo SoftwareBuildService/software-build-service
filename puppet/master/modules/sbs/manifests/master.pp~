@@ -1,0 +1,5 @@
+class sbs::master {
+  include sbs-base
+  
+  include ldap,apache,jenkins,nexus,sonar
+}

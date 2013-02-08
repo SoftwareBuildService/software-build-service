@@ -1,0 +1,7 @@
+class sbs::node {
+  include sbs-base
+
+  /*
+     TODO: Cleanup cron jobs
+   */
+}

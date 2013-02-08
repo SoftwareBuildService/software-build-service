@@ -1,5 +1,5 @@
-class sbs-build-master {
-  include sbs-base
+class sbs::master {
+  include sbs
   
   include ldap,apache,jenkins,nexus,sonar
 }
