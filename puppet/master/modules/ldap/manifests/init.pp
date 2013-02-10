@@ -17,7 +17,7 @@ class ldap {
 
   /*
     ADMIN_PW=admin123
-    READ_USER_NAME=sbs123
+    READ_USER_NAME=sbs-read
     READ_USER_PW_TEXT=sbs123
     READ_USER_PW=`slappasswd -s $READ_USER_PW_TEXT`
     DC1=sbs

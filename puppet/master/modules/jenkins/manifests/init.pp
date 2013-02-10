@@ -1,6 +1,4 @@
 class jenkins {
-  require => Package['apache'];
-
   package {'jenkins':
     ensure => present,
   }
@@ -14,9 +12,6 @@ class jenkins {
   /*
     Jenkins Plugins: maven, sonar, subversion
     
-    # run configure from the postinst script
-    dpkg-reconfigure --frontend=noninteractive -u jenkins
-
     # rename properties file
     mv /etc/default/jenkins /etc/default/jenkins.orig
     mv /etc/default/jenkins.sbs /etc/default/jenkins

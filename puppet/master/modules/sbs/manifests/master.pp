@@ -1,5 +1,6 @@
 class sbs::master {
   include sbs
   
-  include ldap,apache,jenkins,nexus,sonar
+  include ldap,apache-proxy,sonar
+/*,jenkins,nexus,sonar*/
 }

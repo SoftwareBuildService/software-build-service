@@ -1,5 +1,4 @@
 class nexus {
-  require => Package['apache'];
 
   user { "nexus":
     ensure => present,
