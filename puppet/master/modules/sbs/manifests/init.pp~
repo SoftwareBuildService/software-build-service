@@ -1,19 +1,19 @@
 class sbs {
-  include sbs::params
-
-  package { 'openjdk-7-jdk': 
-    ensure => present,
-  }
-
-  exec { "update-java-alternatives --set java":
-    unless => 'test $(readlink /etc/alternatives/java) == "/usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java"',
-    require => Package["openjdk-7-jdk"],
-  }
-
   user { "sbs":
     ensure => present,
     shell => "/bin/bash",
   }
 
+  package { 'openjdk-7-jdk': 
+    ensure => present,
+  }
+
+/*
+
+TODO:
+   * add group sbs
+   * add group to all users jenkins, nexus, sonar
+   * chmod all folders to group sbs
+*/
 }
 

@@ -1,12 +1,24 @@
-class nexus {
+class sbs::nexus {
 
-  user { "nexus":
-    ensure => present,
-    shell => "/bin/bash",
-    gid => "sbs",
+  include apache
+  /* FIXME: Without this we get a ... */
+  include apache::params
+
+  apache::vhost::proxy { 'nexus':
+    servername => "sbs.jcoderz.org",
+    port => 443,
+    dest => "http://localhost:8080",
+    ssl => true,
+    priority => 10,
+    vhost_name => "*",
   }
 
+
+
   /*
+    # repackage the Nexus tar.gz
+    http://developer.ubuntu.com/packaging/html/packaging-new-software.html#building-the-package
+
     chown -R nexus:sbs /opt/nexus-2.0.6
 
     # Create start/stop links

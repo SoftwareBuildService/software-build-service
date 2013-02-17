@@ -1,0 +1,52 @@
+NameVirtualHost <%= vhost_name %>:<%= port %>
+<VirtualHost <%= vhost_name %>:<%= port %>>
+  <% if ssl == true %>
+  SSLEngine on
+  SSLCertificateFile <%= ssl_path %>/certs/pl.cert
+  SSLCertificateKeyFile <%= ssl_path %>/private/pl.key
+  <% end %>
+  ServerName <%= srvname %>
+<% if serveraliases.is_a? Array %>
+<% serveraliases.each do |name| %><%= "  ServerAlias #{name}\n" %><% end %>
+<% elsif serveraliases != '' %>
+<%= "  ServerAlias #{serveraliases}" %>
+<% end %>
+  ProxyRequests Off
+  <Proxy *>
+    Order deny,allow
+    Allow from all
+  </Proxy>
+
+<% for uri in no_proxy_uris %>
+  ProxyPass        <%= uri %> !
+<% end %>
+  ProxyPass        /<%= vhost_name %> <%= dest %>/<%= vhost_name %>
+  ProxyPassReverse /<%= vhost_name %> <%= dest %>/<%= vhost_name %>
+  ProxyPreserveHost On 
+
+  <Location /sonar>
+    SSLRequireSSL
+
+    AuthBasicProvider       "ldap"
+    AuthLDAPUrl             "ldap://localhost:389/dc=sbs,dc=org"
+    AuthLDAPGroupAttributeIsDN on
+    AuthLDAPBindDN          "cn=sbs-read,ou=system,dc=sbs,dc=org"
+    AuthLDAPBindPassword    "sbs123"
+
+    AuthType Basic
+    AuthName "sbs"
+
+    Require valid-user
+    
+    ProxyPass http://localhost:9000/sonar
+    ProxyPassReverse http://localhost:9000/sonar
+
+  </Location>
+
+  ErrorLog /var/log/<%= scope.lookupvar("apache::params::apache_name") %>/<%= name %>_error.log
+  LogLevel warn
+<% if access_log -%>
+  CustomLog /var/log/<%= scope.lookupvar("apache::params::apache_name") %>/<%= name %>_access.log combined
+<% end -%>
+</VirtualHost>
+

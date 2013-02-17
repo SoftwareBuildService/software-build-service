@@ -1,0 +1,37 @@
+NameVirtualHost *:443
+
+<VirtualHost *:443>
+        ServerAdmin sbs
+        ServerName localhost
+
+        SSLEngine on
+        SSLCertificateFile /export/sbs/apache2/ssl/server.crt
+        SSLCertificateKeyFile /export/sbs/apache2/ssl/server.key
+        SSLProtocol all
+        SSLCipherSuite HIGH:MEDIUM
+
+        DocumentRoot /var/www
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride None
+        </Directory>
+        <Directory /var/www/>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
+
+        ErrorLog ${APACHE_LOG_DIR}/sbs_error.log
+
+        # Possible values include: debug, info, notice, warn, error, crit,
+        # alert, emerg.
+        LogLevel warn
+
+        CustomLog ${APACHE_LOG_DIR}/sbs_access.log combined
+        
+        Include /export/sbs/apache2/conf.d/*.conf
+
+        RewriteEngine On
+        SSLProxyEngine on
+</VirtualHost>

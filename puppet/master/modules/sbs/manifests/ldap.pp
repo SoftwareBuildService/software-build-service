@@ -1,4 +1,4 @@
-class ldap {
+class sbs::ldap {
   package {'slapd':
     ensure => present,
   }
