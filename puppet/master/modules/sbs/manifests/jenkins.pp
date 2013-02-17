@@ -23,9 +23,14 @@ class sbs::jenkins {
     "git" : ;
   }
 
-/*
-TODO:
-Set the context path  when using the Ubuntu package by adding --prefix=/jenkins to JENKINS_ARGS in /etc/default/jenkins ( or in /etc/sysconfig/jenkins for RHEL/CentOS package)
-*/
+  /* We need to add the --context=/jenkins parameter to JENKINS_ARGS */
+  file {'/etc/default/jenkins':
+    source => 'puppet:///modules/sbs/jenkins/etc/default/jenkins',
+    notify  => Service["jenkins"],
+    mode    => 644,
+    owner   => "root",
+    group   => "root",
+  }
+
 }
 
