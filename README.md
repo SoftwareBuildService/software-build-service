@@ -10,6 +10,6 @@ The portal sub-folder provides files for a portal which integrates the tools
 * SonarQube
 * Nexus
 
-See  
+See http://dev-snapshot.blogspot.de/2014/02/integrating-jenkins-sonarqube-and-nexus.html for details.
 
 
