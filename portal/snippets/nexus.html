@@ -1,0 +1,21 @@
+<style type="text/css">
+// Hide the original logo so that it does not flicker on page load.
+div#branding img {
+  display:none;
+}
+div#header {
+  background-color: white;
+  background-image: none;
+}
+</style>
+<script src="/js/require-2.1.11.js"></script>
+<script>
+require(["/js/jquery-1.11.0.min.js"], function(util) {
+  require(["/js/nexus-customization.js"], function(util) {
+    // nothing to do
+  });
+  require(["/js/portal-panel.js"], function(util) {
+    // nothing to do
+  });
+});
+</script>
